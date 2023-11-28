@@ -1,11 +1,22 @@
+
+{% extends 'base.html' %}
+{% block content  %}
+
+
+
+
+   
+
 <h1>Welcome to blogsss</h1>
 
 <ul>
 {% for post in object_list %}
-<li><a href="{% url 'article_detail' post.pk  %}">{{ post.title }}</a> - {{ post.author.first_name }} - {{ post.author.last_name}}<br/>
+<li><a href="{% url 'article_detail' post.pk  %}">{{ post.title }}</a> -<a href="{% url 'Auth_detail' post.pk  %}"> {{ post.author.first_name }} - {{ post.author.last_name}}</a><br/>
     {{post.body}}</li>
 
 
 
 {% endfor %}
 </ul>
+
+{% endblock %}

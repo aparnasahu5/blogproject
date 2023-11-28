@@ -13,5 +13,9 @@ class HomeView(ListView):
 class ArticleDetailView(DetailView):
     model =Post
     template_name='article_details.html'
+
+class ProfileView(DetailView):
+    model = Post
+    template_name='auth_details.html'
 # Create your views here.
 
