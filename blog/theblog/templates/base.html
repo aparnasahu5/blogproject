@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>My blog website</title>
+    <title>{% block title  %}My blog website{% endblock %}</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,11 +19,36 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+              {% if user.is_authenticated  %}
               
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{%  url 'add_post' %}">Add post</a>
               </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'add_category' %}">Add category</a>
+              </li>
+
+
               
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'register' %}">Register</a>
+              </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'login' %}">Login</a>
+              </li>
+              {% endif %}
               
             </ul>
            
