@@ -21,6 +21,31 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 
+{% if cat_menu %}
+
+<div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Categories
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    {% for item in cat_menu %}
+                <h4><a class="dropdown-item" href="{% url 'category' item|slugify %}">
+                {{ item }}<br/></a></h4>
+                {% endfor %}
+  </div>
+</div>
+
+{% else %}
+
+<li class="nav-item">
+  <a class="nav-link" href="{%  url 'category-list' %}">Categories</a>
+</li>
+              
+              
+              {% endif %}
+
+
               {% if user.is_authenticated  %}
               
               <li class="nav-item">
@@ -31,6 +56,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="{%  url 'add_category' %}">Add category</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'edit_profile' %}">Edit profile</a>
+              </li>
+              <a class="dropdown-item" href="{% url 'password_change'
+                %}">Change password</a>
 
 
               

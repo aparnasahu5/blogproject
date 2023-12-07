@@ -7,15 +7,19 @@
 {% if user.is_authenticated  %}
    
 
-<h1>Add post</h1>
-<br/><br/>
-<div class="form-group">
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-secondary" > Post</button>
-
+    <h1>Add post</h1>
+    <br/><br/>
+    <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button class="btn btn-secondary" > Post</button>
+    <script>
+        var name="{{ user.id }}";
+        document.getElementById("userid").value = name;
+    </script>
 {% else %}
-Youre not allowed here
+    Youre not allowed here
 {% endif %}
 {% endblock %}
