@@ -4,7 +4,7 @@ from .views import HomeView
 from .views import ArticleDetailView
 from .views import ProfileView
 from .views import AddPostView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView
-from .views import CategoryView, CategoryListView, LikeView
+from .views import CategoryView, CategoryListView, LikeView, AddCommentView
 urlpatterns = [
     #path('',views.home,name="home"),
     path('', HomeView.as_view(), name="home"),
@@ -17,4 +17,6 @@ urlpatterns = [
     path('article/<int:pk>/remove', DeletePostView.as_view(), name='delete_post'),
     path('category-list/', CategoryListView, name='category-list'),
     path('like/<int:pk>', LikeView, name='like_post'),
+    path('article/<int:pk>/comment', AddCommentView.as_view(), name='add_comment'),
+    
 ]

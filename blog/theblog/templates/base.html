@@ -56,11 +56,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="{%  url 'add_category' %}">Add category</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{%  url 'edit_profile' %}">Edit profile</a>
-              </li>
-              <a class="dropdown-item" href="{% url 'password_change'
-                %}">Change password</a>
+              
+             
+
+              
+              
 
 
               
@@ -81,7 +81,23 @@
               {% endif %}
               
             </ul>
-           
+           <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user.first_name }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{%  url 'edit_profile' user.id %}">Edit user settings</a>
+                  {% if user.profile.id %}
+                <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile</a>
+                  {% else %}
+                  <a class="dropdown-item" href="{% url 'create_profile' %}">Create Profile</a>
+                  {% endif %}
+                  {% if user.profile.id %}
+                <a class="dropdown-item" href="{% url 'profile_page' user.profile.id %}">Show Profile</a>
+                {% endif %}
+              </div>
+            </li>
           </div>
         </div>
       </nav>
